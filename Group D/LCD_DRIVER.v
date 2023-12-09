@@ -173,7 +173,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd10: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= "C"; //write data
+								lcd_data <= "P"; //write data
 								state <= state + 1'd1;
 						end
 						5'd11: begin
@@ -183,7 +183,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd12: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= "n"; //write data
+								lcd_data <= "a"; //write data
 								state <= state + 1'd1;
 								end
 						5'd13: begin
@@ -193,7 +193,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd14: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= "t"; //write data
+								lcd_data <= "s"; //write data
 								state <= state + 1'd1;
 						end
 						5'd15: begin
@@ -203,7 +203,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd16: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= ":"; //write data
+								lcd_data <= "s"; //write data
 								state <= state + 1'd1;
 						end
 						5'd17: begin
@@ -213,7 +213,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd18: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= data1; //write data: tens digit
+								lcd_data <= " "; //write data
 								state <= state + 1'd1;
 						end
 						5'd19: begin
@@ -223,7 +223,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd20: begin
 								lcd_rs <= 1'b1;
 								lcd_en <= 1'b1;
-								lcd_data <= data0; //write data: single digit
+								lcd_data <= "i"; //write data: single digit
 								state <= state + 1'd1;
 						end
 						5'd21: begin
@@ -233,7 +233,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd22: begin
 						        lcd_rs <= 1'b1;
                                 lcd_en <= 1'b1;
-                                lcd_data <= digit1; //write data: test digit 1
+                                lcd_data <= "s"; //write data: test digit 1
                                 state <= state + 1'd1;
 						end
 						5'd23: begin
@@ -243,7 +243,7 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd24: begin
 						        lcd_rs <= 1'b1;
                                 lcd_en <= 1'b1;
-                                lcd_data <= digit2; //write data: test digit 1
+                                lcd_data <= digit3; //write data: test digit 1
                                 state <= state + 1'd1;
 						end
 						5'd25: begin
@@ -253,10 +253,20 @@ module LCD_DRIVER(input clk, //50MHz!!
 						5'd26: begin
 						        lcd_rs <= 1'b1;
                                 lcd_en <= 1'b1;
-                                lcd_data <= digit3; //write data: test digit 1
+                                lcd_data <= digit2; //write data: test digit 1
                                 state <= state + 1'd1;
 						end
 						5'd27: begin
+                                lcd_en <= 1'b0;
+                                state <= state + 1'd1;
+						end
+						5'd28: begin
+						        lcd_rs <= 1'b1;
+                                lcd_en <= 1'b1;
+                                lcd_data <= digit1; //write data: test digit 1
+                                state <= state + 1'd1;
+						end
+						5'd29: begin
                                 lcd_en <= 1'b0;
                                 state <= 5'd8;
 						end
@@ -269,4 +279,3 @@ assign lcd_rw = 1'b0; //only write
 assign lcd_n = 1'b0;
 assign lcd_p = 1'b1;	
 endmodule
-
